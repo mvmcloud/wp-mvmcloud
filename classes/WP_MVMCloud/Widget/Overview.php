@@ -1,0 +1,66 @@
+<?php
+
+namespace WP_MVMCloud\Widget;
+
+class Overview extends \WP_MVMCloud\Widget
+{
+
+    public $className = __CLASS__;
+
+    protected function configure($prefix = '', $params = array())
+    {
+        $timeSettings = $this->getTimeSettings();
+        $this->parameter = array(
+            'idSite' => self::$wpMvmcloud->getMvmcloudSiteId($this->blogId),
+            'period' => isset($params['period']) ? $params['period'] : $timeSettings['period'],
+            'date' => isset($params['date']) ? $params['date'] : $timeSettings['date'],
+            'description' => $timeSettings['description']
+        );
+        $this->title = !$this->isShortcode ? $prefix . __('Overview', 'wp-mvmcloud') . ' (' . __($this->pageId == 'dashboard' ? $this->rangeName() : $timeSettings['description'], 'wp-mvmcloud') . ')' : ($params['title'] ? $params['title'] : '');
+        $this->method = 'VisitsSummary.get';
+    }
+
+    public function show()
+    {
+        $response = self::$wpMvmcloud->request($this->apiID[$this->method]);
+        if (!empty($response['result']) && $response['result'] = 'error')
+            echo '<strong>' . __('Mvmcloud error', 'wp-mvmcloud') . ':</strong> ' . htmlentities($response['message'], ENT_QUOTES, 'utf-8');
+        else {
+            if (in_array($this->parameter['date'], array('last30', 'last60', 'last90'))) {
+                $result = array();
+                if (is_array($response)) {
+                    foreach ($response as $data)
+                        foreach ($data as $key => $value)
+                            if (isset($result[$key]) && is_numeric($value))
+                                $result[$key] += $value;
+                            elseif (is_numeric($value))
+                                $result[$key] = $value;
+                            else
+                                $result[$key] = 0;
+                    if (isset($result['nb_visits']) && $result['nb_visits'] > 0) {
+                        $result['nb_actions_per_visit'] = round($result['nb_actions'] / $result['nb_visits'], 1);
+                        $result['bounce_rate'] = round($result['bounce_count'] / $result['nb_visits'] * 100, 1) . '%';
+                        $result['avg_time_on_site'] = round($result['sum_visit_length'] / $result['nb_visits'], 0);
+                    } else $result['nb_actions_per_visit'] = $result['bounce_rate'] = $result['avg_time_on_site'] = 0;
+                }
+                $response = $result;
+            }
+            $time = isset($response['sum_visit_length']) ? $this->timeFormat($response['sum_visit_length']) : '-';
+            $avgTime = isset($response['avg_time_on_site']) ? $this->timeFormat($response['avg_time_on_site']) : '-';
+            $tableHead = null;
+            $tableBody = array(array(__('Visitors', 'wp-mvmcloud') . ':', $this->value($response, 'nb_visits')));
+            if ($this->value($response, 'nb_uniq_visitors') != '-')
+                array_push($tableBody, array(__('Unique visitors', 'wp-mvmcloud') . ':', $this->value($response, 'nb_uniq_visitors')));
+            array_push($tableBody,
+                array(__('Page views', 'wp-mvmcloud') . ':', $this->value($response, 'nb_actions') . ' (&#216; ' . $this->value($response, 'nb_actions_per_visit') . ')'),
+                array(__('Total time spent', 'wp-mvmcloud') . ':', $time . ' (&#216; ' . $avgTime . ')'),
+                array(__('Bounce count', 'wp-mvmcloud') . ':', $this->value($response, 'bounce_count') . ' (' . $this->value($response, 'bounce_rate') . ')')
+            );
+            if (!in_array($this->parameter['date'], array('last30', 'last60', 'last90')))
+                array_push($tableBody, array(__('Time/visit', 'wp-mvmcloud') . ':', $avgTime), array(__('Max. page views in one visit', 'wp-mvmcloud') . ':', $this->value($response, 'max_actions')));
+            $tableFoot = (self::$settings->getGlobalOption('mvmcloud_shortcut') ? array(__('Shortcut', 'wp-mvmcloud') . ':', '<a href="' . self::$settings->getGlobalOption('mvmcloud_url') . '" target="_BLANK">Mvmcloud</a>' . (isset($aryConf['inline']) && $aryConf['inline'] ? ' - <a href="?page=wp-mvmcloud_stats">WP-MVMCloud</a>' : '')) : null);
+            $this->table($tableHead, $tableBody, $tableFoot);
+        }
+    }
+
+}

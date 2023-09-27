@@ -1,0 +1,57 @@
+.wp-mvmcloud-hidden {
+	display: none;
+}
+
+table.wp-mvmcloud-table th.right, td.right {
+	text-align: right;
+}
+
+table.wp-mvmcloud-table tr:hover {
+	background-color: #ccc;
+}
+
+table.wp-mvmcloud-table tbody.clickable {
+	cursor: pointer;
+}
+
+#wp-mvmcloud_stats_vistors_graph {
+	overflow: hidden;
+}
+
+.wp-mvmcloud_dynbar canvas {
+	padding-top: 5px !important
+}
+
+table.wp-mvmcloud_menu-tab th {
+	vertical-align: top;
+}
+
+div.wp-mvmcloud-debug {
+	padding:10px;
+}
+
+tr.wp-mvmcloud-hideDetails {
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+input.wp-mvmcloud-wide {
+	width:100%;
+}
+
+div.wp-mvmcloud-donate {
+	float:right;
+	width:220px;
+	background:#ffc;
+	padding:10px;
+	border:1px solid black;
+	margin: 10px 10px;
+}
+
+div.wp-mvmcloud-donate div {
+	width:190px;
+	text-align:center;
+	border:solid black;
+	border-width:1px 0 0 0 ;
+	padding:5px
+}

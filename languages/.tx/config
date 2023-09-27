@@ -1,0 +1,9 @@
+[main]
+host = https://www.transifex.com
+
+[wp-mvmcloud.wp-mvmcloud]
+file_filter = wp-mvmcloud-<lang>.po
+source_file = wp-mvmcloud.pot
+source_lang = en
+type = PO
+
