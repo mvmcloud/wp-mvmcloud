@@ -30,6 +30,7 @@ the files they download and so much more.
 
 = First steps =
 - You need a subscription of the MVMCloud Analytics. If you don't have one you can get it at [MVMCloud Analytics](https://www.mvmcloud.net/en/analytics);
+- Download the plugin at https://github.com/mvmcloud/wp-mvmcloud/releases/download/stable/wp-mvmcloud.2.0.28.zip;
 - Install and activate this plugin on your WordPress installation;
 - Configure the plugin to access your MVMCloud Analytics instance;
 - Install, using this plugin, the MVMCloud Analytics tracking code on your WordPress head tag;
