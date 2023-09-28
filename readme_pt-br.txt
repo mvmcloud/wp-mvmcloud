@@ -1,9 +1,9 @@
-=== WP-MVMCloud Integraçã0 ===
+=== WP-MVMCloud Integração ===
 
 Desenvolvedor: MVMCloud
-Reque ao menos: 5.0
+Requer ao menos: 5.0
 Testado até: 6.2
-Tag estável: 1.0.28
+Tag estável: 2.0.28
 Tags: mvmcloud, tracking, statistics, stats, analytics
 
 Adiciona estatísticas do MVMCloud Analytics ao seu painel do WordPress e também é capaz de adicionar o Código de Rastreamento do MVMCloud Analytics ao seu blog.
@@ -12,7 +12,7 @@ Adiciona estatísticas do MVMCloud Analytics ao seu painel do WordPress e també
 
 Se você estiver usando o MVMCloud Analytics e quiser adicionar as estatísticas do seu site ao painel do WordPress, use o [plugin MVMCloud para WordPress](https://github.com/mvmcloud/wp-mvmcloud).
 
-Este plugin usa a API MVMCloud Analytics para mostrar suas estatísticas do MVMCloud Analytics em seu painel do WordPress. Também é possível adicionar o código de rastreamento do MVMCloud Analytics ao seu blog e fazer algumas modificações no código de rastreamento. Além disso, WP-MVMCloud oferece suporte a redes WordPress e gerencia vários sites e seus códigos de rastreamento.
+Este plugin usa a API MVMCloud Analytics para mostrar as suas estatísticas do MVMCloud Analytics no seu painel do WordPress. Também é possível adicionar o código de rastreamento do MVMCloud Analytics ao seu blog e fazer algumas modificações no código de rastreamento. Além disso, WP-MVMCloud oferece suporte a redes WordPress e gerencia vários sites e seus códigos de rastreamento.
 
 Para utilizar este plugin é necessário o aplicativo de web analytics MVMCloud Analytics. Se você não possui uma assinatura, você pode obter uma em [MVMCloud Analytics](https://www.mvmcloud.net/en/analytics).
 

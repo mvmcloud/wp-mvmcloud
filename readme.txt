@@ -3,7 +3,7 @@
 Contributors: MVMCloud
 Requires at least: 5.0
 Tested up to: 6.2
-Stable tag: 1.0.28
+Stable tag: 2.0.28
 Tags: mvmcloud, tracking, statistics, stats, analytics
 
 Adds MVMCloud Analytics statistics to your WordPress dashboard and is also able to add the MVMCloud Analytics Tracking Code to your blog.
