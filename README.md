@@ -6,7 +6,10 @@ This [WordPress](https://wordpress.org) plugin adds a [MVMCloud Analytics](https
 
 To use this plugin you will need to subscribe a MVMCloud Analytics instance. If you don't have a subscription you can get one at [MVMCloud Analytics](https://www.mvmcloud.net/en/analytics).
 
-This repository was created to develop and maintain WP-MVMCloud (WP-MVMCloud).
+This repository was created to develop and maintain WP-MVMCloud.
+
+To know how to install and configure this plugin follow the steps in [WP-MVMCloud how to install and configure](https://github.com/mvmcloud/wp-mvmcloud/blob/master/readme.txt)
+
 
 ## Supported languages
 

@@ -3,6 +3,8 @@
  * MVMCloud Analytics - free/libre analytics platform
  * MVMCloud Analytics Proxy Hide URL
  *
+ * @link https://mvmcloud.org/faq/how-to/#faq_132
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
  */
 
 if (!defined('MVMCLOUD_PROXY_FROM_ENDPOINT')) {
